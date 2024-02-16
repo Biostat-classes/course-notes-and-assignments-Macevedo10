@@ -215,7 +215,7 @@ dataset.
 ADD ANY R CHUNKS YOU USED TO COMPLETE THE TASK.
 
 ```{r}
-change BodyWt=Body_weight"*
+rename(sleep, Body_weight = BodyWt)
 ```
 
 #### 6
@@ -265,6 +265,16 @@ consider. First plot how *TotalSleep* is explained by *BrainWt*. Are
 there any issues with the data? Exclude any outlier and fit a linear
 model to obtain the p-value for the model (hint: summary()). What does
 this imply?
+
+i dont see any issues with the data.
+
+```{r}
+plot(TotalSleep ~ factor(BrainWt), data = sleep)
+```
+
+```{r}
+summary(plot(TotalSleep ~ factor(Primate), data = sleep))
+```
 
 ENTER ANSWERS HERE. ADD ANY R CHUNKS YOU USED TO FIND THE ANSWER.
 
