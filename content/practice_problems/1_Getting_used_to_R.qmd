@@ -166,6 +166,23 @@ by clicking the *Insert Chunk* button on the toolbar or by pressing
 Is `-1:2` the same as `(-1):2` or `-(1:2)`? INSERT AN R CHUNK HERE AND
 RUN EACH OF THESE COMMANDS. Then state what each of these does.
 
+-1:2 shows that it is an integer starting from negative one and going to
+2. (-1):2 does the same thing as -1:2. -(1:2) makes the two integers
+inside the parenthesis negative and gives the list of numbers between
+these two integers.
+
+```{r}
+-1:2
+```
+
+```{r}
+(-1):2
+```
+
+```{r}
+-(1:2)
+```
+
 ### Data input, plotting, and tests
 
 You can read in a dataset from the internet following this protocol.
@@ -185,6 +202,9 @@ Info on the dataset is viewable \@
 How many rows does the **sleep** data set have (hint: `?dim`)? What kind
 of data is stored in each variable?
 
+It has 62 rows. Each row depicts the information gathered from the sleep
+study of a different animal.
+
 ENTER ANSWERS HERE. ADD ANY R CHUNKS YOU USED TO FIND THE ANSWER.
 
 #### 5
@@ -193,6 +213,10 @@ Change the column named *BodyWt* to *Body_weight*"\* in the sleep
 dataset.
 
 ADD ANY R CHUNKS YOU USED TO COMPLETE THE TASK.
+
+```{r}
+change BodyWt=Body_weight"*
+```
 
 #### 6
 
@@ -206,7 +230,11 @@ this. You can modify the read.csv command (add stringsAsFactors = T
 option), eg
 
 ```{r, eval=F}
-sleep <- read.csv("http://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/sleep.csv", stringsAsFactors = T)
+sleep <- read.csv("http://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/datasets/sleep.csv", stringsAsFactors = 
+```
+
+```{r}
+plot(species,(total sleep)data = sleep)
 ```
 
 If you do this, you'll need to rechange anything you previously updated
