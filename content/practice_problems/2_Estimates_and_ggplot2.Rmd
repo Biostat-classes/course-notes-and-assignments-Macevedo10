@@ -509,10 +509,10 @@ First plot how TotalSleep is explained by BrainWt (remember the issues
 with the data). Use ggplot2 to plot the relationship.
 
 ```{r}
-ggplot(sleep, aes(x=TotalSleep, y = BrainWt)) +
+ggplot(sleep, aes(x=BrainWt, y = TotalSleep)) +
   geom_point()+
 xlab("TotalSleep")+
-ylab("BrainWt")+
+ylab("Total Sleep")+
 ggtitle("The effect of Brain Weight on decreasing Total Sleep")
 ```
 
@@ -522,6 +522,11 @@ Next color code each plot point by whether or not its a primate. In
 order to do this you can use the Primate column or (following class
 code) make a new column called Taxa to represent the information
 (hint:search for “ revalue”). Make sure axes are well-labeled.
+```{r}
+ggplot(sleep, aes(x=BrainWt, y =TotalSleep)) +
+  geom_point(aes(colour=Taxa))
+```
+
 
 ### 3
 
