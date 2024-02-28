@@ -522,11 +522,11 @@ Next color code each plot point by whether or not its a primate. In
 order to do this you can use the Primate column or (following class
 code) make a new column called Taxa to represent the information
 (hint:search for “ revalue”). Make sure axes are well-labeled.
+
 ```{r}
 ggplot(sleep, aes(x=BrainWt, y =TotalSleep)) +
   geom_point(aes(colour=Taxa))
 ```
-
 
 ### 3
 
@@ -534,6 +534,25 @@ Let’s work with histograms. \* What type of variation do we see in total
 time spent sleeping? Create a histogram to explore this issue. \* Facet
 the graph you created based on whether or not the animal is a primate
 (Primate column). \* Now only graph the data for primates.
+
+We can see a right skewed graph based on total sleep including all
+subjects.
+
+```{r}
+ggplot(sleep, aes(x=Dreaming)) +
+  geom_histogram() +
+  ylab("Hours") +
+  xlab("Total Sleep") +
+  ggtitle("Variations of total sleep in primates")
+```
+
+```{r}
+ggplot(sleep[sleep$Taxa == "Primate",], aes(x=TotalSleep)) +
+  geom_histogram() + 
+          ylab("Frequency of sleep in Primtes") +
+    xlab("Total Sleep") +
+    ggtitle("Variations of total sleep in primates")
+```
 
 ### 4
 
