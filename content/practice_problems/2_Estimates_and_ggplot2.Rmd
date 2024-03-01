@@ -525,7 +525,16 @@ code) make a new column called Taxa to represent the information
 (hint:search for “ revalue”). Make sure axes are well-labeled.
 
 ```{r}
-ggplot(sleep, aes(x=BrainWt, y =TotalSleep)) +
+library(plyr)
+sleep$Taxa <- revalue(sleep$Primate, c(Y = "Primate", N = "Non-primate"))
+sleep$Taxa <- relevel(sleep$Taxa, "Primate")
+```
+
+```{r}
+
+```
+
+```{ggplot(sleep, aes(x=BrainWt, y =TotalSleep)) +}
   geom_point(aes(colour=Taxa))
 ```
 
@@ -562,6 +571,17 @@ total sleep changes with \* Primate (relabeled as yes/no as
 Primate/Non-Primate; note there are multiple ways to do this!) – use a
 95% confidence interval for the bar \* Predation risk (as a factor!) –
 use 1 standard error for the bar. Note the difference!
+
+```{r}
+library(Rmisc)
+sleep_by_Primate <- summarySE(sleep, measurevar = "TotalSleep", groupvars = "Taxa", na.rm = T)
+ggplot(sleep_by_Primate
+       , aes(x=Taxa, y=TotalSleep)) +
+  geom_col(size = 3) +
+  geom_errorbar(aes(ymin=TotalSleep-ci, ymax=TotalSleep+ci), size=1.5) +
+  ylab("Total sleep (hours per day")+ggtitle("Sleep across different taxa")
+
+```
 
 ```{r}
 str(sleep)
