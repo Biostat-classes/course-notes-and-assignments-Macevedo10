@@ -534,9 +534,7 @@ sleep$Taxa <- relevel(sleep$Taxa, "Primate")
 
 ```
 
-```{ggplot(sleep, aes(x=BrainWt, y =TotalSleep)) +}
-  geom_point(aes(colour=Taxa))
-```
+`{ggplot(sleep, aes(x=BrainWt, y =TotalSleep)) +}   geom_point(aes(colour=Taxa))`
 
 ### 3
 
