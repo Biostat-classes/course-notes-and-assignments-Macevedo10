@@ -140,6 +140,7 @@ console output (but graphs and objects are still produced!). Try
 ```{r}
 source("https://raw.githubusercontent.com/jsgosnell/CUNY-BioStats/master/code_examples/qqplot_example.R")
 
+
 ```
 
 #### 2
@@ -177,6 +178,20 @@ the list is short):
 
 ```{r}
 flies <- c(183.2, 149.0, 154.0, 167.2, 187.2, 158.0, 143.0 )
+```
+
+```{r}
+flies <-c(183.2, 149.0, 154.0, 167.2, 187.2, 158.0, 143.0 )
+z.test(x=flies,mu=161, sigma.x=sqrt(275))
+```
+
+```{r}
+t.test(x=flies,mu=161)
+
+```
+
+```{r}
+wilcox.test(flies, mu=161)
 ```
 
 or make a dataframe in a spreadsheet software (eg, Excel, Google Sheets)
