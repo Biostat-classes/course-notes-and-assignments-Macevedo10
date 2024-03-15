@@ -123,3 +123,7 @@ questions correctly. How likely is this to happen, and is there evidence
 the students helped the dog?
 
 **MAKE SURE TO THINK ABOUT YOUR TEST OPTIONS**
+
+```{r}
+binom.test(33,100,p=.25)
+```
