@@ -73,27 +73,24 @@ Are people eared (do they prefer one ear or another)? Of 25 people
 observed while in conversation in a nightclub, 19 turned their right ear
 to the speaker and 6 turn their left ear to the speaker. How strong is
 the evidence for eared-ness given this data (adapted from Analysis of
-Biological Data)? \* state a null and alternative hypothesis \*
-calculate a test statistic (signal) for this data \* Make you understand
-how to construct a null distribution + using sampling/simulation (code
-or written explanation) + by using an appropriate distribution (code or
-written explanation) \* Calculate and compare p-values obtained using +
-simulation (calculation won’t be required on test, but make sure you
-understand!) (code or written explanation) + equations for binomial
-distribution (code or written explanation) + R functions
-(required)(code) \* Calculate a 95% confidence interval for the
-proportion of people who are right-eared \* How do your 95% confidence
-interval and hypothesis test compare?
+Biological Data)?
 
-Null Hypothesis: People do not have a preference in which ear they use
-to hear making the probability .5 for either ear.
-
-Alternative: People do have a preference of which ear they use more
-commonly.
+\* state a null and alternative hypothesis
 
 ```{r}
-binom.test(19,25)
+#Null Hypothesis: People do not have a preference in which ear they use to hear making the probability .5 for either ear.
+#Alternative: People do have a preference of which ear they use more commonly.
 ```
+
+\* calculate a test statistic (signal) for this data
+
+```{r}
+19/25 #using the data to work with the right ear
+```
+
+\* Make you understand how to construct a null distribution + using
+sampling/simulation (code or written explanation) + by using an
+appropriate distribution (code or written explanation)
 
 ```{r}
 sampling_experiment = rbinom(10000, 25, .5)
@@ -108,9 +105,34 @@ sum(using_distribution)
 ```
 
 ```{r}
-length(sampling_experiment[sampling_experiment >= 19 | sampling_experiment <= 6])/length(sampling_experiment)
-
+Number_righteared = c(0:25)
+pdf = data.frame(Number_righteared, using_distribution)
+plot(0:25, using_distribution)
 ```
+
+\* Calculate and compare p-values obtained using + simulation
+(calculation won’t be required on test, but make sure you understand!)
+(code or written explanation) + equations for binomial distribution
+(code or written explanation) + R functions (required)(code)
+
+```{r}
+#for the r code section
+binom.test(19,25,0.5)
+```
+
+\* Calculate a 95% confidence interval for the proportion of people who
+are right-eared
+
+```{r}
+binom.confint(19, 25, conf.level= 0.95, methods = "all")
+```
+
+\* How do your 95% confidence interval and hypothesis test compare?
+
+The confidence interval test gave me a closer interval of .56-.89
+whereas the binomial test gave a larger yet similar interval.
+Regardless, the p-values were below the alpha level of 0.05 so the null
+hypothesis is rejected that people do not have an ear preference.
 
 ### 2
 
@@ -127,3 +149,10 @@ the students helped the dog?
 ```{r}
 binom.test(33,100,p=.25)
 ```
+
+considering the p-value we fail to reject the hypothesis that the
+students did not help the dog. so they might have helped him:). This has
+a p-value of 0.08222 so it is about 8% likely that they helped him. From
+the given information, I don't see evidence to conclude they helped the
+dog; It is about 92% possible that they did not help him because the dog
+had a 1/4 chance of choosing the right answer for each question.
